@@ -1,0 +1,100 @@
+[
+	{
+      "model":"inspection.haltevent",
+      "pk":1,
+      "fields":{
+         "name":"Pluie"
+      }
+   },
+   {
+      "model":"inspection.haltevent",
+      "pk":2,
+      "fields":{
+         "name":"Mauvais temps"
+      }
+   },
+   {
+      "model":"inspection.haltevent",
+      "pk":3,
+      "fields":{
+         "name":"Attente OCP pour d\u00e9but chargement"
+      }
+   },
+   {
+      "model":"inspection.haltevent",
+      "pk":4,
+      "fields":{
+         "name":"Arr\u00eat caus\u00e9 par NAVIRE"
+      }
+   },
+   {
+      "model":"inspection.haltevent",
+      "pk":5,
+      "fields":{
+         "name":"Arr\u00eat OCP"
+      }
+   },
+   {
+      "model":"inspection.haltevent",
+      "pk":6,
+      "fields":{
+         "name":"Arr\u00eat OCP pour Intermediat Draft Survey"
+      }
+   },
+   {
+      "model":"inspection.incidentevent",
+      "pk":1,
+      "fields":{
+         "name":"Contamination"
+      }
+   },
+   {
+      "model":"inspection.incidentevent",
+      "pk":2,
+      "fields":{
+         "name":"Motte"
+      }
+   },
+   {
+      "model":"inspection.incidentevent",
+      "pk":3,
+      "fields":{
+         "name":"D\u00e9bris de Caoutchouc / Corps \u00e9tranger"
+      }
+   },
+   {
+      "model":"inspection.incidentevent",
+      "pk":4,
+      "fields":{
+         "name":"Temperature"
+      }
+   },
+   {
+      "model":"inspection.incidentevent",
+      "pk":5,
+      "fields":{
+         "name":"Humidity"
+      }
+   },
+   {
+      "model":"inspection.incidentevent",
+      "pk":6,
+      "fields":{
+         "name":"Non-Free flowing"
+      }
+   },
+   {
+      "model":"inspection.incidentevent",
+      "pk":7,
+      "fields":{
+         "name":"Couleur du produit"
+      }
+   },
+   {
+      "model":"inspection.incidentevent",
+      "pk":8,
+      "fields":{
+         "name":"Taux de poussi\u00e8re \u00e9lev\u00e9"
+      }
+   }
+]

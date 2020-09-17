@@ -1,0 +1,18 @@
+[
+   {
+      "model":"inspection.port",
+      "pk":1,
+      "fields":{
+         "name":"JORF LASFAR",
+         "docks":6
+      }
+   },
+   {
+      "model":"inspection.port",
+      "pk":2,
+      "fields":{
+         "name":"SAFI",
+         "docks":1
+      }
+   }
+]

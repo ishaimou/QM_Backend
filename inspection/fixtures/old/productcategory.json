@@ -1,0 +1,298 @@
+[
+	{
+      "model":"inspection.productcategory",
+      "pk":1,
+      "fields":{
+         "name":"DAP EURO",
+         "product_family_ref":1
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":2,
+      "fields":{
+         "name":"DAP USA",
+         "product_family_ref":1
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":3,
+      "fields":{
+         "name":"DAP AMINE",
+         "product_family_ref":1
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":4,
+      "fields":{
+         "name":"DAP Standard",
+         "product_family_ref":1
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":5,
+      "fields":{
+         "name":"DAP BRAZIL",
+         "product_family_ref":1
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":6,
+      "fields":{
+         "name":"DAP DOWN GRADE",
+         "product_family_ref":1
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":7,
+      "fields":{
+         "name":"DAP Dark",
+         "product_family_ref":1
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":8,
+      "fields":{
+         "name":"TSP (JORF)",
+         "product_family_ref":4
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":9,
+      "fields":{
+         "name":"TSP Brazil (JORF)",
+         "product_family_ref":4
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":10,
+      "fields":{
+         "name":"TSP (SAFI)",
+         "product_family_ref":4
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":11,
+      "fields":{
+         "name":"MAP 11 52 USA",
+         "product_family_ref":2
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":12,
+      "fields":{
+         "name":"MAP 11 52",
+         "product_family_ref":2
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":13,
+      "fields":{
+         "name":"MAP 11 52 BRAZIL",
+         "product_family_ref":2
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":14,
+      "fields":{
+         "name":"MAP 11 54 NE",
+         "product_family_ref":2
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":15,
+      "fields":{
+         "name":"MAP 11 54",
+         "product_family_ref":2
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":16,
+      "fields":{
+         "name":"NPK 12 24 12",
+         "product_family_ref":3
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":17,
+      "fields":{
+         "name":"NPK 11 22 16",
+         "product_family_ref":3
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":18,
+      "fields":{
+         "name":"NPK  14 18 18  6S 1B2O3 Afrique",
+         "product_family_ref":3
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":19,
+      "fields":{
+         "name":"NPK  14 18 18  6S 1B2O3 Benin",
+         "product_family_ref":3
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":20,
+      "fields":{
+         "name":"NPK 12 20 18 5S 1B2O3 TOGO",
+         "product_family_ref":3
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":21,
+      "fields":{
+         "name":"NPK 13 17 17 6S 0.5B2O3 0.7 Zn",
+         "product_family_ref":3
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":22,
+      "fields":{
+         "name":"NPK 14 23 14 6S 1B2O3",
+         "product_family_ref":3
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":23,
+      "fields":{
+         "name":"NPK 14 23 14",
+         "product_family_ref":3
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":24,
+      "fields":{
+         "name":"NPK 15 15 15 6S 1B2O3",
+         "product_family_ref":3
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":25,
+      "fields":{
+         "name":"NPK 15 15 15",
+         "product_family_ref":3
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":26,
+      "fields":{
+         "name":"NPK 14 28 14",
+         "product_family_ref":3
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":27,
+      "fields":{
+         "name":"NPK 14-18-18",
+         "product_family_ref":3
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":28,
+      "fields":{
+         "name":"NPS 12 40 6S 1Zn",
+         "product_family_ref":6
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":29,
+      "fields":{
+         "name":"NPS 12 45 5S 1Zn USA",
+         "product_family_ref":6
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":30,
+      "fields":{
+         "name":"NPS 12-46-6S",
+         "product_family_ref":6
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":31,
+      "fields":{
+         "name":"NPS 18.9   37.7   6.95S   0.1B  Ethiopie",
+         "product_family_ref":6
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":32,
+      "fields":{
+         "name":"NPS 17.8   35.7   7.7S   0.1B  2.2Zn Ethiopie",
+         "product_family_ref":6
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":33,
+      "fields":{
+         "name":"NPS 19 38 7S Ethiopie",
+         "product_family_ref":6
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":34,
+      "fields":{
+         "name":"NPS BRAZIL",
+         "product_family_ref":6
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":35,
+      "fields":{
+         "name":"ASP 19-38-7S",
+         "product_family_ref":6
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":36,
+      "fields":{
+         "name":"ASP 19-38-0-7S",
+         "product_family_ref":5
+      }
+   },
+   {
+      "model":"inspection.productcategory",
+      "pk":37,
+      "fields":{
+         "name":"ASP 19 38 6S EURO",
+         "product_family_ref":5
+      }
+   }
+]

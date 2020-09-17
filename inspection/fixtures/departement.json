@@ -1,0 +1,9 @@
+[
+	{
+	  "model":"inspection.departement",
+	  "pk":1,
+	  "fields":{
+	     "name":"INTERLINK FORTUITY"
+	  }
+   }
+]

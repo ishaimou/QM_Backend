@@ -1,0 +1,16 @@
+[
+	{
+      "model":"inspection.producttype",
+      "pk":1,
+      "fields":{
+         "name":"FERTILIZER"
+      }
+   },
+   {
+      "model":"inspection.producttype",
+      "pk":2,
+      "fields":{
+         "name":"ROCK"
+      }
+   }
+]
