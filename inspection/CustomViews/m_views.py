@@ -11,13 +11,14 @@ from django.db.models import Q
 
 
 from inspection.serializers import (HourlyCheckSerializer, UserIsActive,
-                                     IncidentDetailSerializer, ProductSerializer, InspectionSerializer)
+                                    IncidentDetailSerializer, ProductSerializer, InspectionSerializer)
 from inspection.choices import Incident_Choices
 
 from inspection.CustomSerializers.m_serializers import ProductListSerializer
 
 from inspection.models import (HourlyCheck, User, ProductCategory, Inspection,
-    IncidentDetails, ProductFamily, Product, ClientLoadingDetails)
+                               IncidentDetails, ProductFamily, Product, ClientLoadingDetails)
+
 
 class HourlyCheckByInspecRefView(generics.ListCreateAPIView):
 
@@ -33,7 +34,7 @@ class HourlyCheckByInspecRefView(generics.ListCreateAPIView):
         if pagination is not None:
             return self.get_paginated_response(serialized.data)
         return Response(serialized.data)
-    
+
     def create(self, request, pk):
         try:
             inspection = Inspection.objects.get(pk=pk)
@@ -45,9 +46,10 @@ class HourlyCheckByInspecRefView(generics.ListCreateAPIView):
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-    
+
     def perform_create(self, serializer):
         serializer.save()
+
 
 def structureTree(items, pop='name'):
     result = {}
@@ -59,6 +61,7 @@ def structureTree(items, pop='name'):
             result[key] = {}
         result[key].update(item)
     return result
+
 
 class MonthlyEventsViewSet(generics.ListAPIView):
     '''
@@ -72,12 +75,10 @@ class MonthlyEventsViewSet(generics.ListAPIView):
 
     def get(self, request):
         Events = IncidentDetails.objects\
-                    .filter(stopping_hour__year=self.today.year, stopping_hour__month=self.today.month)\
-                    .values("related").annotate(count=Count("id"))
+            .filter(stopping_hour__year=self.today.year, stopping_hour__month=self.today.month)\
+            .values("related").annotate(count=Count("id"))
         result = structureTree(Events, 'related')
         return Response(result)
-
-
 
 
 class UserDisableViewSet(generics.UpdateAPIView):
@@ -101,7 +102,6 @@ class ProductListView(generics.ListAPIView):
     serializer_class = ProductListSerializer
 
 
-
 # Get tree of product and their families with Quantities
 
 class QuantitiesStatView(generics.ListAPIView):
@@ -123,13 +123,14 @@ class QuantitiesStatView(generics.ListAPIView):
         key = None
         for obj in objs:
             data = {
-                    'Quantity': obj['Quantity'],
-                    obj['product_ref__name']: []
-                }
+                'Quantity': obj['Quantity'],
+                obj['product_ref__name']: []
+            }
             new = {
                 Inspection.objects.filter(loading_ref=obj['loading_ref']).values('vessel_ref__name')[0]['vessel_ref__name']: ClientLoadingDetails.objects.filter(loading_ref__loading_starting_date__year=self.today.year,
-                    loading_ref__loading_starting_date__month=obj['loading_ref__loading_starting_date__month'],
-                    loading_ref=obj['loading_ref'], product_ref=obj['product_ref']).values().aggregate(Quantity=Sum('quantity'))['Quantity']
+                                                                                                                                                                 loading_ref__loading_starting_date__month=obj[
+                                                                                                                                                                     'loading_ref__loading_starting_date__month'],
+                                                                                                                                                                 loading_ref=obj['loading_ref'], product_ref=obj['product_ref']).values().aggregate(Quantity=Sum('quantity'))['Quantity']
             }
             key = obj['product_ref__name']
             data[key] = new
@@ -147,36 +148,37 @@ class QuantitiesStatView(generics.ListAPIView):
         for obj in objs:
             Month = obj['loading_ref__loading_starting_date__month']
             data = {
-                    'Quantity': obj['Quantity'],
-                    obj['product_ref__product_category_ref__name']: []
-                }
+                'Quantity': obj['Quantity'],
+                obj['product_ref__product_category_ref__name']: []
+            }
             prod = products.filter(product_ref__product_category_ref=obj['product_ref__product_category_ref'],
-                    loading_ref__loading_starting_date__month=Month)
+                                   loading_ref__loading_starting_date__month=Month)
             # print(prod)
-            data[obj['product_ref__product_category_ref__name']].append(self.get_product(prod))
+            data[obj['product_ref__product_category_ref__name']].append(
+                self.get_product(prod))
             key = obj['product_ref__product_category_ref__name']
             res.append(data)
-        
+
         return res
-        
+
     def list(self, request):
         products = ClientLoadingDetails.objects.filter(loading_ref__loading_starting_date__year=self.today.year)\
             .select_related('product_ref')\
             .values('loading_ref__loading_starting_date__month',
-             'product_ref', 'product_ref__name', 'loading_ref',
-             'loading_ref__loading_starting_date__month')\
+                    'product_ref', 'product_ref__name', 'loading_ref',
+                    'loading_ref__loading_starting_date__month')\
             .annotate(Quantity=Sum('quantity'))
 
         categories = products\
             .values('product_ref__product_category_ref__name')\
             .values('loading_ref__loading_starting_date__month',
-             'product_ref__product_category_ref__name',
-             'product_ref__product_category_ref')\
+                    'product_ref__product_category_ref__name',
+                    'product_ref__product_category_ref')\
             .annotate(Quantity=Sum('quantity'))
 
-        families = categories.values('loading_ref__loading_starting_date__month', 
-            'product_ref__product_category_ref__product_family_ref',
-            'product_ref__product_category_ref__product_family_ref__name')\
+        families = categories.values('loading_ref__loading_starting_date__month',
+                                     'product_ref__product_category_ref__product_family_ref',
+                                     'product_ref__product_category_ref__product_family_ref__name')\
             .annotate(Quantity=Sum('quantity'))
 
         # Get all families
@@ -188,13 +190,14 @@ class QuantitiesStatView(generics.ListAPIView):
         for family in families:
             print(family)
             month = family['loading_ref__loading_starting_date__month']
-            day = datetime.datetime(year=2019, month=month, day=1).strftime("%m/%d/%Y")
+            day = datetime.datetime(
+                year=2019, month=month, day=1).strftime("%m/%d/%Y")
             data = {
                 'Quantity': family['Quantity'],
                 day: [],
             }
-            res = categories.filter(product_ref__product_category_ref__product_family_ref=family['product_ref__product_category_ref__product_family_ref'], 
-            loading_ref__loading_starting_date__month=month)
+            res = categories.filter(product_ref__product_category_ref__product_family_ref=family['product_ref__product_category_ref__product_family_ref'],
+                                    loading_ref__loading_starting_date__month=month)
             data[day] = self.get_categories(res, products)
             key = family['product_ref__product_category_ref__product_family_ref__name']
             if key not in tree:
@@ -216,6 +219,8 @@ class EventsCountView(generics.ListAPIView):
         return Response({**INPROGRESS, **ONHOLD})
 
 # Handling 404 Errors in production mode
+
+
 def error404(request, exception):
     response_data = {}
     response_data['detail'] = 'Not found.'

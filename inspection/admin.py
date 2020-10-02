@@ -12,6 +12,11 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
 
 
+class ClientAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'destination')
+    list_filter = ('destination',)
+
+
 admin.site.register(Departement)
 admin.site.register(Vessel)
 admin.site.register(Loading, LoadingAdmin)
@@ -22,7 +27,7 @@ admin.site.register(ProductFamily)
 admin.site.register(ProductType)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Origin, ProductAdmin)
-admin.site.register(Client, ProductAdmin)
+admin.site.register(Client, ClientAdmin)
 admin.site.register(ClientLoadingDetails)
 admin.site.register(Halt)
 admin.site.register(HaltEvent)

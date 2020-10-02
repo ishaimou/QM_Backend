@@ -5,7 +5,7 @@ from rest_framework.exceptions import NotFound
 
 class PageNumberPaginationDataOnly(PageNumberPagination):
     # Set any other options you want here like page_size
-    page_size = 12
+    page_size = 120
     max_page_size = 1000
 
     def paginate_queryset(self, queryset, request, view=None):

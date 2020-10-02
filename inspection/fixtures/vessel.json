@@ -3,7 +3,7 @@
       "model":"inspection.vessel",
       "pk":1,
       "fields":{
-         "name":"",
+         "name":"ATLANTIC ISLAND",
          "photo":"",
          "holds_nbr":null
       }

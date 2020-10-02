@@ -86,10 +86,10 @@ class InspectionTestView(viewsets.ModelViewSet):
     filterset_fields = [  # 'inspection_status',
         'vessel_ref',
         'loading_ref__loading_port',
-                        'user_ref',
-                        'user_ref__profile__company_name',
-                        'dock__which_dock',
-                        'foreign_inspector'
+        'user_ref',
+        'user_ref__profile__company_name',
+        'dock__which_dock',
+        'foreign_inspector'
     ]
     ordering_fields = ['inspection_date']
     pagination_class = PageNumberPaginationDataOnly
@@ -143,7 +143,7 @@ class InspectionTestView(viewsets.ModelViewSet):
         return Response({
             "count": 0,
             "data": serializer.data
-            })
+        })
 
     def partial_update(self, request, *args, **kwargs):
         data = request.data.copy()
@@ -215,6 +215,7 @@ def path_maker(inspection_pk, incident_pk, product_pk, hourlycheck_pk, survey_pk
         path = inspection_path + '/'
     return path
 
+
 def file_create(data, files):
     inspection_pk = "" if "inspection_ref" not in data else data[
         'inspection_ref']
@@ -229,40 +230,50 @@ def file_create(data, files):
         'hourlycheck_ref']
     survey_pk = "" if "survey_ref" not in data else data['survey_ref']
     client_pk = "" if "client_id" not in data else data['client_id']
-    path = path_maker(inspection_pk, incident_pk, product_pk, hourlycheck_pk, survey_pk, client_pk)
+    path = path_maker(inspection_pk, incident_pk, product_pk,
+                      hourlycheck_pk, survey_pk, client_pk)
     for v in files.getlist('file'):
         try:
-            time = str(datetime.datetime.now()).translate({ord(i): None for i in '-: '})[:14] + '_'
+            time = str(datetime.datetime.now()).translate(
+                {ord(i): None for i in '-: '})[:14] + '_'
             new_path = path + time + str(v)
             handle_upload_file(v, new_path)
             if 'hourlycheck_ref' in data:
                 Files.objects.create(
                     file=new_path[10:],
-                    inspection_ref=Inspection.objects.get(id=data['inspection_ref']),
-                    hourlycheck_ref=HourlyCheck.objects.get(id=data['hourlycheck_ref'])
+                    inspection_ref=Inspection.objects.get(
+                        id=data['inspection_ref']),
+                    hourlycheck_ref=HourlyCheck.objects.get(
+                        id=data['hourlycheck_ref'])
                 )
             elif 'product_ref' in data:
                 Files.objects.create(
                     file=new_path[10:],
-                    inspection_ref=Inspection.objects.get(id=int(data['inspection_ref'])),
+                    inspection_ref=Inspection.objects.get(
+                        id=int(data['inspection_ref'])),
                     product_ref=Product.objects.get(id=data['product_ref'])
                 )
             elif 'incident_ref' in data:
                 Files.objects.create(
                     file=new_path[10:],
-                    inspection_ref=Inspection.objects.get(id=data['inspection_ref']),
-                    incident_ref=IncidentDetails.objects.get(id=data['incident_ref'])
+                    inspection_ref=Inspection.objects.get(
+                        id=data['inspection_ref']),
+                    incident_ref=IncidentDetails.objects.get(
+                        id=data['incident_ref'])
                 )
             elif 'survey_ref' in data:
                 Files.objects.create(
                     file=new_path[10:],
-                    inspection_ref=Inspection.objects.get(id=data['inspection_ref']),
-                    survey_ref=IntermediateDraughtSurvey.objects.get(id=data['survey_ref'])
+                    inspection_ref=Inspection.objects.get(
+                        id=data['inspection_ref']),
+                    survey_ref=IntermediateDraughtSurvey.objects.get(
+                        id=data['survey_ref'])
                 )
             elif 'client_id' in data:
                 Files.objects.create(
                     file=new_path[10:],
-                    inspection_ref=Inspection.objects.get(id=data['inspection_ref']),
+                    inspection_ref=Inspection.objects.get(
+                        id=data['inspection_ref']),
                     client_ref=Client.objects.get(id=data['client_id'])
                 )
         except ObjectDoesNotExist:
@@ -383,7 +394,8 @@ class RequirementView(generics.CreateAPIView):
         except ObjectDoesNotExist:
             return Response(status=status.HTTP_400_BAD_REQUEST, data={"msg": "User does not exist"})
 
-        loading_instance = Loading.objects.create(loading_port=port_instance, loading_starting_date=datetime.datetime.now())
+        loading_instance = Loading.objects.create(
+            loading_port=port_instance, loading_starting_date=datetime.datetime.now())
         dock_instance = Docks.objects.create(which_dock=dock_number)
         inspection_instance = Inspection.objects.create(
             vessel_breathed=vessel_breath,
@@ -440,7 +452,8 @@ class IncidentDetailsView(viewsets.ModelViewSet):
     serializer_class = IncidentDetailSerializer
     permission_classes = (AllowAny,)
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
-    filterset_fields = ['inspection_ref__inspection_status', 'inspection_ref', 'related']
+    filterset_fields = ['inspection_ref__inspection_status',
+                        'inspection_ref', 'related']
     ordering_fields = [
         'inspection_ref__inspection_date',
         'stopping_hour',
@@ -450,7 +463,8 @@ class IncidentDetailsView(viewsets.ModelViewSet):
     def list(self, request, *args, **kwargs):
         if 'resuming_hour' in request.GET:
             if request.GET['resuming_hour'] == 'null':
-                queryset = self.filter_queryset(self.get_queryset().filter(resuming_hour=None))
+                queryset = self.filter_queryset(
+                    self.get_queryset().filter(resuming_hour=None))
             else:
                 queryset = self.filter_queryset(self.get_queryset())
         else:
@@ -463,6 +477,7 @@ class IncidentDetailsView(viewsets.ModelViewSet):
 
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+
 
 class IncidentSpecView(viewsets.ModelViewSet):
     queryset = IncidentSpecs.objects.all()

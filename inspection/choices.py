@@ -1,6 +1,6 @@
 Cargo_State = [
     ('GOOD', 'Clean Cargo'),
-    ('BAD', 'Presence of a quality insident'),
+    ('BAD', 'Presence of a quality incident'),
 ]
 
 H_L = [

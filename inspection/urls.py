@@ -65,6 +65,6 @@ urlpatterns = [
     path("incidentchart/", AllTimeChartView.as_view()),
     path("products/", ProductListView.as_view()),
     path("quantity/statistic", QuantitiesStatView.as_view()),
-    path("inpection/events/counts", EventsCountView.as_view()),
+    path("inspection/events/counts", EventsCountView.as_view()),
     # url(r'^export/xls/', export_users_xls, name='export_users_xls')
 ]
